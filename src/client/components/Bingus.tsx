@@ -27,7 +27,10 @@ export default function Bingus({
     status === "waiting" ? (
       <></>
     ) : (
-      <div className="speech-bubble min-h-[50px] text-3xl flex place-content-center items-center p-3 m-2 ">
+      <div
+        className="speech-bubble min-h-[50px] text-3xl flex place-content-center \
+        items-center p-3 m-2 md:after:left-[350px] after:bottom-1"
+      >
         {speech}
       </div>
     );

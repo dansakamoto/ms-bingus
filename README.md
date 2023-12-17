@@ -3,7 +3,7 @@
 ## to do
 
 - add logo
+- bubble animations
 - backgrounds?
 - configure for ios web applications
-- troubleshoot bubble misalignment on mobile
 - add sharing metadata

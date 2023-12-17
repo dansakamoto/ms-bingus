@@ -7,8 +7,8 @@
 .speech-bubble:after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 350px;
+  /*bottom: 0;*/
+  /*left: 350px;*/
   width: 0;
   height: 0;
   border: 37px solid transparent;
