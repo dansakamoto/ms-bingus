@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import LoadSpinner from "@/client/ui/LoadSpinner";
 import bingusPic from "@/client/assets/bingus.png";
 import "./Bingus.css";
@@ -11,6 +12,10 @@ export default function Bingus({
   status: "waiting" | "loading" | "speaking";
   mainText: string;
 }) {
+  useEffect(() => {
+    const div = document.getElementById("bingusPic");
+    if (div) div.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, []);
   let speech = <></>;
   if (status == "loading") {
     speech = <LoadSpinner />;
@@ -30,7 +35,7 @@ export default function Bingus({
   return (
     <div className="overflow-scroll max-w-5xl">
       {speechBubble}
-      <img src={bingusPic}></img>
+      <img id="bingusPic" src={bingusPic}></img>
     </div>
   );
 }
