@@ -1,0 +1,4 @@
+[contentEditable="true"]:empty:before {
+  content: attr(data-text);
+  color: #999999;
+}

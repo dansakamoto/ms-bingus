@@ -2,6 +2,7 @@ import { FormEvent, useState, KeyboardEvent } from "react";
 import sendPrompt from "@/client/services/sendPrompt";
 import Bingus from "@/client/components/Bingus";
 import type { BingusStatus } from "@/client/components/Bingus";
+import "./App.css";
 
 export default function App() {
   const [inputActive, setinputActive] = useState(true);
@@ -49,6 +50,7 @@ export default function App() {
               <div
                 id="chatInput"
                 role="textbox"
+                data-text="Speak to Bingus"
                 className="text-xl w-full focus:outline-none"
                 onKeyDown={kp}
                 contentEditable
