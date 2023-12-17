@@ -38,7 +38,7 @@ export default function App() {
   };
 
   return (
-    <div id="app" className="h-screen flex flex-col justify-end">
+    <div id="app" className="h-full flex flex-col justify-end">
       <Bingus status={bStatus} mainText={mainText} />
       <div className="w-screen flex justify-end fixed bottom-0 left-0 right-0 max-w-5xl">
         <form method="post" className="w-full flex">
