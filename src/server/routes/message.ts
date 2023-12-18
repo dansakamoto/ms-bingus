@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import MockOpenAI from "@/server/utils/MockApi";
-import { addMessages } from "@/server/utils/data";
+//import { addMessages } from "@/server/utils/data";
 import type { APIMessage } from "@/sharedTypes";
 import type { NextFunction, Request, Response } from "express";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
@@ -40,9 +40,10 @@ export default async function message(
   const reply = { message: response.choices[0].message.content };
 
   res.send(reply);
-
+  /*
   addMessages([
     { role: "user", message: req.body.message },
     { role: "assistant", message: reply.message || "" },
   ]);
+  */
 }
