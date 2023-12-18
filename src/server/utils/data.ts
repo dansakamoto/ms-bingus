@@ -7,7 +7,8 @@ const pool = process.env.DATABASE_URL
   ? new pg.Pool({ connectionString: process.env.DATABASE_URL })
   : new pg.Pool();
   */
-const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new pg.Pool();
+//const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 pool.on("error", (err, client) => {
   console.error(`Unexpected error on idle client`, err);
   client.release();
