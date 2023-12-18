@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import ViteExpress from "vite-express";
 import message from "@/server/routes/message";
+import { getMessages } from "@/server/utils/data";
 
 const port = 3000;
 const app = express();
@@ -19,3 +20,4 @@ ViteExpress.listen(app, port, () => {
 
 // Routes
 app.post("/message", message);
+app.get("/history", getMessages);
