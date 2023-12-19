@@ -34,6 +34,7 @@ export default function Bingus({
         id="speech-bubble"
         className="speech-bubble min-h-[50px] text-xl md:text-3xl flex place-content-center \
         items-center p-3 m-2 md:after:left-[350px] after:bottom-1"
+        aria-live="polite"
       >
         {speech}
       </div>
