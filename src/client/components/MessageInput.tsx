@@ -10,7 +10,7 @@ export default function MessageInput({
   return (
     <div className="w-screen flex justify-center fixed bottom-0 left-0 right-0">
       <div className="w-full max-w-5xl">
-        <form method="post" className="w-full flex">
+        <form method="post" className="w-full flex pb-4">
           <div className="bg-white rounded-2xl text-black w-full p-2 m-2 border-2 border-black">
             <div
               id="chatInput"
