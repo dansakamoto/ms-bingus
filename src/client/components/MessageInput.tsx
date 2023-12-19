@@ -17,6 +17,7 @@ export default function MessageInput({
               role="textbox"
               data-text="Speak to Bingus"
               className="text-xl w-full focus:outline-none"
+              aria-label="Speak to Bingus"
               onKeyDown={kp}
               contentEditable
             ></div>
