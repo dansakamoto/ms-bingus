@@ -42,7 +42,11 @@ export default function Bingus({
   return (
     <div className="overflow-scroll max-w-5xl">
       {speechBubble}
-      <img id="bingusPic" src={bingusPic}></img>
+      <img
+        id="bingusPic"
+        alt="Bingus, a pink hairless cat"
+        src={bingusPic}
+      ></img>
     </div>
   );
 }
