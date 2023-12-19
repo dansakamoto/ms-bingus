@@ -17,7 +17,7 @@ export default class MockOpenAI {
                 index: 0,
                 message: {
                   role: "assistant",
-                  content: "[Placeholder text - lorem ipsum beep booop]",
+                  content: "[Placeholder text - lorem ipsum beep boop]",
                 },
                 finish_reason: "stop",
               },
