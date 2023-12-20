@@ -45,3 +45,18 @@
     background-color: rgba(200, 200, 200, 0.2);
   }
 }
+
+@media (prefers-reduced-motion) {
+  .dot-flashing {
+    animation: dot-flashing 4s infinite linear alternate;
+    animation-delay: 2s;
+  }
+  .dot-flashing::before {
+    animation: dot-flashing 4s infinite alternate;
+    animation-delay: 0s;
+  }
+  .dot-flashing::after {
+    animation: dot-flashing 4s infinite alternate;
+    animation-delay: 4s;
+  }
+}
