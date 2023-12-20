@@ -3,12 +3,16 @@ import sendPrompt from "@/client/services/sendPrompt";
 import Bingus from "@/client/components/Bingus";
 import MessageInput from "@/client/components/MessageInput";
 import type { BingusStatus } from "@/client/components/Bingus";
+import { useTranslation } from "react-i18next";
 import "./App.css";
 
 export default function App() {
   const [inputActive, setinputActive] = useState(true);
   const [mainText, setMainText] = useState("");
   const [bStatus, setBStatus] = useState<BingusStatus>("waiting");
+
+  const { i18n } = useTranslation();
+  document.documentElement.lang = i18n.language;
 
   useEffect(() => {
     window.scrollTo(0, document.body.scrollHeight);

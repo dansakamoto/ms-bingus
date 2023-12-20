@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import LoadDots from "@/client/ui/LoadDots";
 import bingusPic from "@/client/assets/bingus.png";
+import { useTranslation } from "react-i18next";
 import "./Bingus.css";
 
 export type BingusStatus = "waiting" | "loading" | "speaking";
@@ -16,6 +17,7 @@ export default function Bingus({
     //const div = document.getElementById("bingusPic");
     //if (div) div.scrollIntoView({ behavior: "smooth", block: "end" });
   }, []);
+  const { t } = useTranslation();
 
   let speech = <></>;
   if (status == "loading") {
@@ -45,7 +47,7 @@ export default function Bingus({
       {speechBubble}
       <img
         id="bingusPic"
-        alt="Bingus, a pink hairless cat"
+        alt={`Bingus, ${t("a_pink_hairless_cat")}`}
         src={bingusPic}
       ></img>
     </div>
