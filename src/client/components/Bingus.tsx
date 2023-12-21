@@ -1,28 +1,23 @@
-import { useEffect } from "react";
 import LoadDots from "@/client/ui/LoadDots";
 import bingusPic from "@/client/assets/bingus.png";
 import { useTranslation } from "react-i18next";
 import "./Bingus.css";
 
-export type BingusStatus = "waiting" | "loading" | "speaking";
+export type BingusStatus = "waiting" | "loading" | "speaking" | "error";
 
 export default function Bingus({
   status,
   mainText,
 }: {
-  status: "waiting" | "loading" | "speaking";
+  status: BingusStatus;
   mainText: string;
 }) {
-  useEffect(() => {
-    //const div = document.getElementById("bingusPic");
-    //if (div) div.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, []);
   const { t } = useTranslation();
 
   let speech = <></>;
   if (status == "loading") {
     speech = <LoadDots />;
-  } else if (status == "speaking") {
+  } else if (status === "speaking" || status === "error") {
     speech = <>{mainText}</>;
     const div = document.getElementById("speech-bubble");
     if (div) div.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -36,7 +31,7 @@ export default function Bingus({
         id="speech-bubble"
         className="speech-bubble min-h-[50px] text-2xl md:text-3xl flex place-content-center \
         items-center p-3 m-2 md:after:left-[350px] after:bottom-1"
-        aria-live="polite"
+        aria-live={status === "speaking" ? "polite" : "assertive"}
       >
         {speech}
       </div>

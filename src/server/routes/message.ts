@@ -1,7 +1,6 @@
 import OpenAI from "openai";
 import MockOpenAI from "@/server/utils/MockApi";
-//import { addMessages } from "@/server/utils/data";
-import type { APIRequest, APIResponse } from "@/sharedTypes";
+import { maxChatHistory, APIRequest, APIResponse } from "@/api/definition";
 import type { NextFunction, Request, Response } from "express";
 
 export default async function message(
@@ -17,6 +16,19 @@ export default async function message(
     },
   ];
   const gptPrompts = systemPrompt.concat(req.body);
+
+  if (gptPrompts.length > maxChatHistory) {
+    console.error(
+      `Request validation error: Request contains ${gptPrompts.length} item${
+        gptPrompts.length > 1 ? "s" : ""
+      }, but max size is ${maxChatHistory}`
+    );
+    const nullReply: APIResponse = {
+      message: "",
+    };
+    res.send(nullReply);
+    return;
+  }
 
   const openai =
     process.env.NODE_ENV == "production" || process.env.API_DEV == "true"

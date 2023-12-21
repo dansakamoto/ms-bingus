@@ -34,12 +34,11 @@ export default function App() {
 
     const textinput = document.getElementById("chatInput");
     const input = textinput ? textinput.innerHTML : "";
-    console.log(textinput);
     if (textinput) textinput.innerHTML = "";
     sendPrompt(input)
       .then((res) => {
-        setMainText(res);
-        setBStatus("speaking");
+        setMainText(res ? res : "(request error)");
+        setBStatus(res ? "speaking" : "error");
         setinputActive(true);
       })
       .catch((e: Error) => {

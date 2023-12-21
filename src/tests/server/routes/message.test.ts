@@ -1,7 +1,7 @@
 import { expect, test, vi } from "vitest";
 import message from "@/server/routes/message";
 import type { Response, Request, NextFunction } from "express";
-import type { APIRequest } from "@/sharedTypes";
+import type { APIRequest } from "@/api/definition";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 
 const prompt: ChatCompletionMessageParam = {

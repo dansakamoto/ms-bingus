@@ -1,7 +1,7 @@
-import type { APIRequest, APIResponse } from "@/sharedTypes";
+import type { APIRequest, APIResponse } from "@/api/definition";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 
-let lastExchange: ChatCompletionMessageParam[] = [];
+const lastExchanges: ChatCompletionMessageParam[] = [];
 
 export default async function sendPrompt(input: string, route = "/message") {
   const message: ChatCompletionMessageParam = {
@@ -10,10 +10,7 @@ export default async function sendPrompt(input: string, route = "/message") {
   };
 
   const apiReq: APIRequest =
-    lastExchange.length > 0 ? [...lastExchange, message] : [message];
-
-  console.log("next request:");
-  console.log(apiReq);
+    lastExchanges.length > 0 ? [...lastExchanges, message] : [message];
 
   const res = await fetch(route, {
     method: "POST",
@@ -26,10 +23,16 @@ export default async function sendPrompt(input: string, route = "/message") {
     return r.json() as Promise<APIResponse>;
   });
 
-  lastExchange = [
-    { role: "user", content: input },
-    { role: "assistant", content: res.message },
-  ];
+  if (!res.message) {
+    console.error("Received empty response from endpoint");
+    return "";
+  }
+
+  while (lastExchanges.length > 2) {
+    lastExchanges.shift();
+  }
+  lastExchanges.push({ role: "user", content: input });
+  lastExchanges.push({ role: "assistant", content: res.message });
 
   return res.message;
 }
