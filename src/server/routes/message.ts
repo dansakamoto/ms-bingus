@@ -3,6 +3,13 @@ import MockOpenAI from "@/server/utils/MockApi";
 import { maxChatHistory, APIRequest, APIResponse } from "@/api/definition";
 import type { NextFunction, Request, Response } from "express";
 
+const isGPTLive =
+  process.env.NODE_ENV == "production" || process.env.API_DEV == "true";
+
+if (isGPTLive && !process.env.API_KEY) {
+  throw new Error("Unable to start in production mode: missing API_KEY");
+}
+
 export default async function message(
   req: Request<APIRequest>,
   res: Response,
@@ -30,10 +37,9 @@ export default async function message(
     return;
   }
 
-  const openai =
-    process.env.NODE_ENV == "production" || process.env.API_DEV == "true"
-      ? new OpenAI({ apiKey: process.env.API_KEY })
-      : new MockOpenAI();
+  const openai = isGPTLive
+    ? new OpenAI({ apiKey: process.env.API_KEY })
+    : new MockOpenAI();
   const response = await openai.chat.completions.create({
     model: "gpt-4",
     messages: gptPrompts,
