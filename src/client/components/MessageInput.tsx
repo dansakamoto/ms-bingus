@@ -26,7 +26,7 @@ export default function MessageInput({
           </div>
           <button
             onClick={send}
-            className="bg-[#1a1a1a] hover:bg-[#646cff] min-w-[100px] \
+            className="bg-[#1a1a1a] hover:bg-[#646cff] active:bg-[#646cff] min-w-[100px] \
         p-1 rounded-2xl text-xl my-2 mr-2"
           >
             {t("send")}
