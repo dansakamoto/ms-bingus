@@ -1,15 +1,20 @@
 import { expect, test, vi } from "vitest";
 import message from "@/server/routes/message";
 import type { Response, Request, NextFunction } from "express";
-import { APIMessage } from "@/sharedTypes";
+import type { APIRequest } from "@/sharedTypes";
+import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
+
+const prompt: ChatCompletionMessageParam = {
+  role: "user",
+  content: "test input",
+};
 
 const req = {
-  body: {
-    message: "are you there?",
-  },
+  body: [prompt],
 };
+
 const res = {
-  send: (reply: APIMessage) => {
+  send: (reply: APIRequest) => {
     return reply;
   },
 };
@@ -18,7 +23,7 @@ const spy = vi.spyOn(res, "send");
 
 test("call OpenAI api and check for valid output", async () => {
   await message(
-    req as Request<APIMessage>,
+    req as Request<APIRequest>,
     res as unknown as Response,
     next as NextFunction
   );

@@ -12,11 +12,17 @@ app.use(express.json());
 app.listen(3000);
 
 app.post("/message", (req, res) => {
-  res.send({ message: "test output from " + req.body.message });
+  res.send({
+    message:
+      "test output from " +
+      req.body[0].content +
+      ", role is set to " +
+      req.body[0].role,
+  });
 });
 
 test("test client-side api fetch", async () => {
   expect(await sendPrompt("test input", "http://localhost:3000/message")).toBe(
-    "test output from test input"
+    "test output from test input, role is set to user"
   );
 });
