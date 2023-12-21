@@ -17,9 +17,6 @@ export default async function message(
     },
   ];
   const gptPrompts = systemPrompt.concat(req.body);
-  if (process.env.NODE_ENV == "development") {
-    console.log(JSON.stringify(gptPrompts));
-  }
 
   const openai =
     process.env.NODE_ENV == "production" || process.env.API_DEV == "true"
