@@ -8,7 +8,7 @@
     "build": "vitest run && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "start": "NODE_ENV=production tsx src/server/main.ts",
-    "test": "vitest",
+    "test": "vitest run && npx playwright test",
     "apidev": "API_DEV=true nodemon -w src/server -x tsx src/server/main.ts"
   },
   "dependencies": {
