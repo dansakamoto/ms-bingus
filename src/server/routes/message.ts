@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import MockOpenAI from "@/server/utils/MockApi";
+import { MockOpenAI } from "@/server/utils/MockApi";
 import { maxChatHistory, APIRequest, APIResponse } from "@/api/definition";
 import type { NextFunction, Request, Response } from "express";
 
@@ -9,6 +9,10 @@ const isGPTLive =
 if (isGPTLive && !process.env.API_KEY) {
   throw new Error("Unable to start in production mode: missing API_KEY");
 }
+
+export const nullReply: APIResponse = {
+  message: "",
+};
 
 export default async function message(
   req: Request<APIRequest>,
@@ -30,9 +34,6 @@ export default async function message(
         gptPrompts.length > 1 ? "s" : ""
       }, but max size is ${maxChatHistory}`
     );
-    const nullReply: APIResponse = {
-      message: "",
-    };
     res.send(nullReply);
     return;
   }

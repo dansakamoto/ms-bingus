@@ -1,6 +1,7 @@
 import type { ChatCompletionCreateParamsNonStreaming } from "openai/resources/index";
 
-export default class MockOpenAI {
+export const mockGptResponse = "[Placeholder text - lorem ipsum beep boop]";
+export class MockOpenAI {
   chat = {
     completions: {
       create: async (params: ChatCompletionCreateParamsNonStreaming) => {
@@ -17,7 +18,7 @@ export default class MockOpenAI {
                 index: 0,
                 message: {
                   role: "assistant",
-                  content: "[Placeholder text - lorem ipsum beep boop]",
+                  content: mockGptResponse,
                 },
                 finish_reason: "stop",
               },
