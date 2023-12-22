@@ -9,4 +9,4 @@ Live at https://msbingus.strangeglances.club
 ## Development
 Bingus was built in Vite/React and runs off of the ChatGPT API.
 
-It was created partially as a learning exercise. So if you're wondering why Bingus needs l18n and end-to-end tests, that's my excuse.
+It was created partially as a learning exercise. So if you're wondering why Bingus needs localization, end-to-end tests, and progressive web app configuration, that's my excuse.
