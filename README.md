@@ -4,7 +4,7 @@
 
 Just a silly little c~~h~~atbot.
 
-Live at https://msbingus.strangeglances.club
+Live at https://msbingus.dansakamoto.com
 
 ## Development
 Bingus was built in Vite/React and runs off of the ChatGPT API.
