@@ -2,11 +2,23 @@
 
 ![bingus](docs/assets/msbingus.png)
 
-Just a silly little c~~h~~atbot.
+Just a silly little catbot.
 
 Live at https://msbingus.dansakamoto.com
 
 ## Development
-Bingus was built in Vite/React and runs off of the ChatGPT API.
 
-It was created partially as a learning exercise. So if you're wondering why Bingus needs localization, end-to-end tests, and progressive web app configuration, that's my excuse.
+Bingus was built in React and uses the ChatGPT API.
+
+## Requirements
+
+Node.js
+
+## Quickstart
+
+Rename .env.example to .env and add a valid OpenAI API key. Then run:
+
+```
+npm install
+npm start
+```
