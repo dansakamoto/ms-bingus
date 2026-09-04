@@ -12,11 +12,12 @@ Bingus was built in React and uses the ChatGPT API.
 
 ## Requirements
 
-Node.js
+- Node.js
+- OpenAI API Key
 
 ## Quickstart
 
-Rename .env.example to .env and add a valid OpenAI API key. Then run:
+Rename .env.example to .env and add a valid OpenAI API key to the file. Then run:
 
 ```
 npm install
